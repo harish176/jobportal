@@ -17,15 +17,21 @@ const Home = () => {
       navigate("/admin/companies");
     }
   }, []);
-  return (
-    <div>
-      <Navbar />
-      <HeroSection />
+ return (
+  <div>
+    <Navbar />
+    <HeroSection />
+    
+    
+    <div className="hidden lg:block">
       <CategoryCarousel />
-      <LatestJobs />
-      <Footer />
     </div>
-  )
+    
+    <LatestJobs />
+    <Footer />
+  </div>
+)
+
 }
 
 export default Home
