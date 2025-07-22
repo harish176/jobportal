@@ -26,7 +26,7 @@ export default defineConfig({
     proxy: {
       // Proxy requests starting with `/api` to the backend server
       "/api": {
-        target: "https://your-backend-domain.com", // replace with your backend URL
+        target: "https://jobportal-new-p71r.onrender.com", // replace with your backend URL
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""), // optional: removes /api prefix
