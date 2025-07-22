@@ -8,11 +8,13 @@ import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 
+
 dotenv.config({});
 
 const app = express();
 
 // middleware
+app.use(express.static(path.join(__dirname, 'public/dist')));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser());
@@ -31,6 +33,18 @@ app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company", companyRoute);
 app.use("/api/v1/job", jobRoute);
 app.use("/api/v1/application", applicationRoute);
+
+app.get("*", (req, res) => {
+  const options = {
+    root: path.join(__dirname, "public/dist"),
+    dotfiles: 'deny',
+    headers: {
+      'Content-Type': 'text/html'
+    }
+  };
+  
+  res.sendFile("index.html", options);
+});
 
 
 
